@@ -1,0 +1,283 @@
+/* === bootstrap, custom-framework modifiers === */
+body {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: var(--font-normal);
+    min-height: 100vh;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* === header, ham-burger aside === */
+header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: var(--theme-primary-color);
+    background-image: url("/assets/images/swoosh.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 2px 2px 0 #00000020;
+    position: relative;
+    z-index: 9999;
+}
+
+header .container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+header .logo {
+    max-width: 200px;
+}
+
+/* ham-burger with animation */
+.ham-burger-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ham-burger {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    position: relative;
+    z-index: 99;
+}
+
+.ham-burger:focus {
+    outline: none;
+}
+
+.line {
+    fill: none;
+    stroke: var(--theme-primary-color);
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.clicked .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.clicked .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.clicked .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+/* aside */
+aside {
+    position: fixed;
+    left: -300px;
+    top: 110px;
+    width: 300px;
+    height: calc(100vh - 110px);
+    background-color: var(--theme-primary-bg-light);
+    padding: 30px 0;
+    transition: all .5s ease-in-out;
+    z-index: 9;
+}
+
+aside.pulled {
+    left: 0;
+}
+
+aside .user {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+aside .user .thumb {
+    margin-bottom: 10px;
+}
+
+aside .user .thumb img {
+    width: 150px;
+    max-width: 100%;
+}
+
+aside .user .name {
+    font-weight: var(--font-bold);
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid red;
+}
+
+aside .nav-items > a {
+    display: block;
+    color: var(--theme-primary-color);
+    font-size: 2rem;
+    font-weight: var(--font-bold);
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid var(--theme-primary-border);
+    transition: all .5s ease-in-out;
+}
+
+aside .nav-items > a:hover {
+    color: #fff;
+    background-color: var(--theme-primary-color);
+}
+
+/* === main === */
+main {
+    transition: all .5s ease-in-out;
+}
+
+main .container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@media (min-width: 1200px) {
+    body.pulled main {
+        padding-left: 300px;
+    }
+}
+
+/*=== form ===*/
+#invoice-form {
+    padding: 100px;
+    background-color: #fff;
+    border: 1px solid var(--theme-primary-color);
+    border-radius: 10px;
+}
+
+#invoice-form .form-item {
+    position: relative;
+    padding-top: 8px;
+}
+
+#invoice-form .form-item label {
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 0;
+    background-color: #fff;
+    padding: 0 10px;
+    position: absolute;
+    left: 25px;
+    top: 0;
+}
+
+#invoice-form .form-item input::placeholder {
+    color: #cecece;
+    font-weight: var(--font-light);
+}
+
+#invoice-form .form-item input {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    background-color: #fff;
+    padding: 15px 25px;
+    border: 1px solid var(--theme-primary-border);
+    border-radius: 10px;
+}
+
+#invoice-form .form-item #suggestions {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    box-shadow: 0 5px 5px 0 #00000020;
+    z-index: 9;
+}
+
+#invoice-form .form-item #suggestions > .suggested-client {
+    color: var(--theme-primary-color);
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding: 5px 25px 5px 40px;
+    background-color: #fff;
+    cursor: pointer;
+    list-style: disc;
+    position: relative;
+}
+
+#invoice-form .form-item #suggestions > .suggested-client:before {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--theme-primary-color);
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+#invoice-items-wrapper input {
+    width: 100%;
+    font-size: 20px;
+    background-color: #fff;
+    padding: 15px 0;
+    border: transparent;
+    border-bottom: 1px solid var(--theme-primary-border);
+}
+
+#invoice-items-wrapper input.price {
+    text-align: right;
+}
+
+#invoice-items-wrapper input::placeholder {
+    color: #cecece;
+    font-weight: var(--font-light);
+}
+
+.invoice-more-items-submit button#add-item {
+    display: inline-block;
+    font-weight: var(--font-bold);
+    letter-spacing: 1px;
+    padding: 5px 20px;
+    background-color: #fff;
+    border: 1px solid var(--theme-primary-border);
+    transition: all 0.5s ease-in-out;
+}
+
+.invoice-more-items-submit button#add-item:hover {
+    background-color: var(--theme-primary-bg-light);
+}
+
+.invoice-more-items-submit button#save {
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    padding: 10px 30px;
+    background-color: var(--theme-primary-color);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.invoice-more-items-submit button#save:hover {
+    background-color: var(--theme-primary-link)
+}
