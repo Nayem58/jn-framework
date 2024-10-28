@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirects the root URL (/) to the public/ directory
+    RewriteRule ^$ public/ [L]
+
+    ### Redirect all other URLs to public/ if they are not existing files or directories ###
+    # Ensures the rule does not create an infinite loop by excluding requests that already start with /public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    # Checks if the requested file does not exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Checks if the requested directory does not exist
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Redirects all other URLs to the public/ directory if they are not existing files or directories
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    ### If the file or directory does not exist in public/, rewrite to public/index.php ###
+    # Checks if the requested file does not exist in the public/ directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Checks if the requested directory does not exist in the public/ directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # If the file or directory does not exist in public/, rewrites the URL to public/index.php
+    RewriteRule ^public/(.*)$ public/index.php [QSA,L]
+</IfModule>
